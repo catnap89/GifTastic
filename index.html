@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Trivia Game</title>
+
+  <link rel="stylesheet" href="assets/css/reset.css" type="text/css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+
+  <!-- When this jquery CDN is at inside head tag and 
+  the one provided by bootstrap is at the bottom of the body tag, which one gets applied? -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="assets/javascript/app.js" defer></script>
+
+</head>
+
+<body>
+  <!-- The video background-->
+  <video autoplay muted loop id="wow_mov_bg">
+    <source src="assets/images/wow_mov_1.mp4" type="video/mp4">
+  </video>
+
+  <div class="container-fluid">
+		
+		<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <a class="navbar-brand font-weight-bold text-reset" href="https://catnap89.github.io/Bootstrap-Portfolio/">Youngwoo Cho</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0"> <!-- Changing mr-auto to ml-auto positioned nav links to the right side-->
+          <li class="nav-item">
+            <a class="nav-link" href="https://catnap89.github.io/Bootstrap-Portfolio/">About <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://catnap89.github.io/Bootstrap-Portfolio/portfolio.html">Portfolio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://catnap89.github.io/Bootstrap-Portfolio/contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>			
+		</nav>
+
+
+    <!-- title -->
+    <div class="row">
+      <div class="col-md-12">
+          <h1 class="display-1 title">
+            GifTastic!
+          </h1>
+      </div>
+    </div>  <!--row-->
+
+    <!-- contents container with 2 columns -->
+		<div class="row main-container">
+      <!-- left-container -->
+			<div class="col-md-8 left-container">
+				<!-- gif display container -->
+        <div class="row contents">
+          <div class="col-md-12">
+           
+            <div class="gif-container">
+              <!-- dynamically created gifs -->
+            </div>
+
+          </div>
+        </div>
+			</div>
+
+      <div class="col-md-4 right-container">
+        <!-- topic add -->
+        <div class="row topic">
+          <div class="col-md-12">
+
+            <form>
+              <div class="form-group">
+                <label for="FormControlTextArea">Add an animal</label>
+                <input type="text" class="form-control" id="inputTopic" placeholder="">
+              </div>
+              
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+
+		</div>  <!-- row -->
+
+		<div class="row fixed-bottom">
+			<div class="col-md-12 footer">
+				<p>
+					Copyright&copy;
+				</p>
+			</div>
+		</div>  <!-- row -->
+		
+	</div>
+
+
+
+  <!-- When the game start, only the title and START button is shown -->
+  <!-- When the START button is clicked -->
+  
+  <!-- Is it okay to delete jquery CDN that bootstrap provides? It seems to be outdated version -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

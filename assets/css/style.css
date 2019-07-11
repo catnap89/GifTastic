@@ -1,0 +1,237 @@
+html {
+  height: 100%; 
+}
+
+body {
+  height: 100%;
+}
+
+/* Style the video: 100% width and height to cover the entire window */
+/* #wow_mov_bg {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+} */
+
+
+
+.container-fluid {
+  height: 100%;
+  /* background-image: url("../images/wow_wallpaper.jpg"); */
+  background-size: cover;
+  overflow: auto;
+}
+
+/* Navbar */
+.navbar {
+  padding: 0;
+  justify-content: space-between;
+  color: #fff; /* This changed the font color of navbar-brand... */
+  border-bottom: 2px solid #ddd;
+  /* Modifying height messes up with toggler */
+  /* height: 90px;  */  
+}
+
+#navbarTogglerDemo02 {
+  flex-grow: 0;
+}
+
+.navbar-brand {
+  background-color: #4aaaa5;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 15px;
+  height: 84px;
+  font-size: 30px;
+}
+
+
+.collapse {
+  padding: 10px;  
+}
+
+.navbar-toggler {
+  width: 70px;
+  height: 70px;
+  margin-right: 10px;
+}
+
+.navbar-nav {
+  padding: 10px; 
+}
+
+/* Title */
+
+.title {
+  border-bottom: 3px solid #dddddd;
+  /* margin-top: 10px; */
+  margin-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  color: teal;
+  text-align: center;
+  font-family: Papyrus, fantasy, sans-serif;
+  font-size: 48px; 
+  font-style: normal; 
+  font-variant: normal; 
+  font-weight: 700;     
+}
+
+/* Content */
+
+.main-container {
+  border: 1px solid red;
+  margin: 0px 20px 20px 20px;
+}
+
+/* left-container */
+.left-container {
+  /* height: 600px;
+  background-image: url("../images/brown_background_1.jpg");
+  padding: 20px; */
+  border: 1px solid blue;
+} 
+
+.contents {
+  border: 1px solid green;
+}
+
+.gif-container {
+  border: 1px solid teal;
+}
+
+/* right-container */
+.right-container {
+  border: 1px solid blue;
+}
+
+
+
+
+
+/* .game-contents {
+  text-align: center;
+  display: none;
+  margin-bottom: 100px;
+} */
+
+/* .first-container {
+  height: 100px;
+} */
+
+/* Footer */
+.footer {
+    background-color: #666666;
+    text-align: center;
+    border-top: 3px solid #4aaaa5;
+}
+
+.footer > p {
+    color: #fff;
+}
+
+/* buttons */
+/* button {
+  font-family: Papyrus, fantasy, sans-serif;
+} */
+
+/* .start-button {
+  margin-top: 200px;
+  margin-bottom: 200px;
+} */
+
+/* .restart-button {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+} */
+
+/* .button-group {
+  margin-top: 50px;
+} */
+
+/* texts & number styling */
+/* h3 { 
+  font-family: Papyrus, fantasy, sans-serif;
+  font-size: 24px; 
+  font-style: normal; 
+  font-variant: normal; 
+  font-weight: 700; 
+  color: yellow;
+} */
+
+/* .timer-number {
+  color: teal;
+} */
+/* 
+.answer {
+  font-family: Papyrus, fantasy, sans-serif;
+  font-size: 24px; 
+  font-style: normal; 
+  font-variant: normal; 
+  font-weight: 700;
+  color: white;
+} */
+
+/* .correct {
+  font-family: Papyrus, fantasy, sans-serif;
+  font-size: 24px; 
+  font-style: normal; 
+  font-variant: normal; 
+  font-weight: 700;
+  color: greenyellow;
+} */
+
+/* .incorrect {
+  font-family: Papyrus, fantasy, sans-serif;
+  font-size: 24px; 
+  font-style: normal; 
+  font-variant: normal; 
+  font-weight: 700;
+  color: red;
+} */
+
+/* .times_up {
+  font-family: Papyrus, fantasy, sans-serif;
+  font-size: 24px; 
+  font-style: normal; 
+  font-variant: normal; 
+  font-weight: 700;
+  color: aqua;
+} */
+
+/* .result_score {
+  color: white;
+} */
+
+
+
+/* gif */
+/* .result_gif {
+  width: 400px;
+  height: 200px;
+} */
+
+/* @media query*/
+/* result_gif */
+@media only screen and (max-width: 980px) {
+    .result_gif {
+        width: 100%;     
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .result_gif {
+        width: 246px;
+        height: 123px;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .result_gif {
+        width: 220px;
+        height: 110px;
+    }
+}
