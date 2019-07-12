@@ -87,7 +87,7 @@ body {
 }
 
 /* left-container */
-.left-container {
+.right-container {
   /* height: 600px;
   background-image: url("../images/brown_background_1.jpg");
   padding: 20px; */
@@ -103,7 +103,7 @@ body {
 }
 
 /* right-container */
-.right-container {
+.left-container {
   border: 1px solid blue;
 }
 
