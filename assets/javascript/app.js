@@ -9,8 +9,8 @@
   * Append new button to the previous button -- check
 
 ## When user click on the dynamically generated button
-  * Using Giphy API, get the data related to the name of the button clicked
-    * Using the data, generate 10 GIFs and their metadata (rating, title, tags, etc) for each GIFs and display them.
+  * Using Giphy API, get the data related to the name of the button clicked -- check
+    * Using the data, generate 10 GIFs and their metadata (rating, title, tags, etc) for each GIFs and display them. -- check
 
   * The GIFs should be static when they are first displayed.
     * Clicking on the static GIF animate it by changing the URL of the static gif to animated gif.
@@ -85,16 +85,50 @@ function gifGenerator() {
       console.log(res);
       for(var i = 0; i < limit; i++) {
 
-        var gifURLs = res.data[i].images.fixed_height.url
+        var gifStillURL = res.data[i].images.fixed_height_still.url;
+        var gifAnimateURL = res.data[i].images.fixed_height.url;
+        var gifRating = $("<p>").text("Rating: " + res.data[i].rating);
+        gifRating.addClass("card-text");
+        var gifTitle = $("<h5>").text("Title: " + res.data[i].title);
+        gifTitle.addClass("card-title");
+       
+        // img (gif) element with below attributes and class
+        var cardDiv = $("<div>");
+        cardDiv.addClass("card");
 
-        var gif = $("<img>");
+        var cardBody = $("<div>");
+        cardBody.addClass("card-body");
 
-        //
-        gif.attr("src", gifURLs);
-        // img.attr("alt", "cat image");
+        var img = $("<img>");
+        img.attr("src", gifStillURL);
+        img.attr("data-still", gifStillURL);
+        img.attr("data-animate", gifAnimateURL);
+        img.attr("data-state", "still");
+        img.addClass("card-img-top gif");
+       
+        cardDiv.append(img);
+        cardDiv.append(cardBody);
+        cardBody.append(gifTitle);
+        cardBody.append(gifRating);
 
-        //
-        $(".gif-container").prepend(gif);
+
+        // meta data rating, title, tags, etc
+        // <div class="card">
+        //   <img src="..." class="card-img-top">
+        //   <div class="card-body">
+        //     <h5 class="card-title">Card title</h5>
+        //     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        //     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        //   </div>
+        // </div>
+
+
+        // favorite button 
+
+        // card
+
+
+        $(".gif-container").prepend(cardDiv);
 
 
       }
