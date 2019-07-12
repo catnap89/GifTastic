@@ -26,7 +26,54 @@
 
 // variables
 // ==========================================
-// 
-var topics = [];
+// Store the topic keywords from input box. Gif generator buttons will be made using this array.
+var topics = ["dog", "cat", "duck", "cow"];
+
+
+// function
+// ==========================================
+// function to display buttons
+function buttonGenerator() {
+  // Deleting the movie buttons prior to adding new movie buttons
+  // (this is necessary otherwise we will have repeat buttons)
+  $(".button-group").empty();
+  // for loop topics array 
+  for(var i = 0; i < topics.length; i++) {
+    // add buttons only if there is some kind of input, and if it is not a duplicate
+    // is it a better idea to use this concept when the input is added to the topics array?
+      var gifButtons = $('<button type="submit" class="btn btn-primary">'+ topics[i] + '</button>');
+  
+      $(".button-group").append(gifButtons);
+    // if(topicInput !== empty && topicInput === duplicate) {
+
+
+    // }
+
+  }
+
+}
+
+$(".topic-submit").on("click", function(event){
+
+  event.preventDefault();
+  // the text user inputed inside #inputTopic textbox.
+  var topicInput = $("#inputTopic").val().trim();
+  console.log(topicInput);
+  if (topicInput != "" && !topics.includes(topicInput)) {
+
+  // push the #inputTopic's value as a string in topics array.
+  topics.push(topicInput);
+
+  buttonGenerator();
+  }
+
+});
+
+
+buttonGenerator();
+// If I keep click on submit button, it makes the button on top of the existing button.
+// Whenever I click on the submit button, I have to push the topic to topics array, however delete current topic buttons and regenerate them.
+
+
 
 
