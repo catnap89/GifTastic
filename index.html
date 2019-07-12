@@ -18,10 +18,6 @@
 </head>
 
 <body>
-  <!-- The video background-->
-  <video autoplay muted loop id="wow_mov_bg">
-    <source src="assets/images/wow_mov_1.mp4" type="video/mp4">
-  </video>
 
   <div class="container-fluid">
 		
@@ -82,15 +78,15 @@
                 <label for="FormControlTextArea">Add an animal</label>
                 <input type="text" class="form-control" id="inputTopic" placeholder="">
               </div>
-              
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <!-- button type is changed from submit to button since submit button automatically refreshes the page causing issues -->
+              <button type="submit" class="btn btn-primary topic-submit">Submit</button>
             </form>
 
           </div>
         <div class="row">
           <div class="col-md-12">
             <div class="button-group">
-              
+
             </div>
           </div>
         </div>
@@ -109,11 +105,6 @@
 		</div>  <!-- row -->
 		
 	</div>
-
-
-
-  <!-- When the game start, only the title and START button is shown -->
-  <!-- When the START button is clicked -->
   
   <!-- Is it okay to delete jquery CDN that bootstrap provides? It seems to be outdated version -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
