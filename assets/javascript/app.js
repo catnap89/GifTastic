@@ -12,9 +12,9 @@
   * Using Giphy API, get the data related to the name of the button clicked -- check
     * Using the data, generate 10 GIFs and their metadata (rating, title, tags, etc) for each GIFs and display them. -- check
 
-  * The GIFs should be static when they are first displayed.
-    * Clicking on the static GIF animate it by changing the URL of the static gif to animated gif.
-    * Clicking on the animated GIF make it static by changing the URL of the animmated gif to static gif.
+  * The GIFs should be static when they are first displayed. -- check
+    * Clicking on the static GIF animate it by changing the URL of the static gif to animated gif. -- check
+    * Clicking on the animated GIF make it static by changing the URL of the animmated gif to static gif. -- check
 
 ## More Gifs button clicked
   * Display 10 more gifs to the page without overwriting existing gifs. (prepend)
@@ -110,7 +110,7 @@ function gifGenerator() {
         cardDiv.append(cardBody);
         cardBody.append(gifTitle);
         cardBody.append(gifRating);
-
+        // favorite button 
         var favBtn = $("<button>");
         favBtn.attr("data-favorite", i);
         favBtn.addClass("btn btn-dark fav-button");
@@ -130,16 +130,26 @@ function gifGenerator() {
         // </div>
 
 
-        // favorite button 
-
-        // card
-
-        // Let's try having multiple .gif-container or rows and use for loop i = 0; i < 2 // i = 2; i < 4 and so on
         $(".gif-container").prepend(cardDiv);
 
 
       }
     });
 }
+
+$(document).on("click", ".gif", function() {
+  // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+  var state = $(this).attr("data-state");
+  // If the clicked image's state is still, update its src attribute to what its data-animate value is.
+  // Then, set the image's data-state to animate
+  // Else set src to the data-still value
+  if (state === "still") {
+    $(this).attr("src", $(this).attr("data-animate"));
+    $(this).attr("data-state", "animate");
+  } else {
+    $(this).attr("src", $(this).attr("data-still"));
+    $(this).attr("data-state", "still");
+  }
+});
 
 
