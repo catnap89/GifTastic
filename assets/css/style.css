@@ -86,11 +86,9 @@ body {
   margin: 0px 20px 100px 20px;
 }
 
-/* left-container */
+/* right-container */
 .right-container {
-  /* height: 600px;
-  background-image: url("../images/brown_background_1.jpg");
-  padding: 20px; */
+
   border: 1px solid blue;
 } 
 
@@ -104,7 +102,7 @@ body {
   
 }
 
-/* right-container */
+/* left-container */
 .left-container {
   border: 1px solid blue;
 }
@@ -123,24 +121,6 @@ body {
 
 }
 
-.gif {
-  /* width: 200px;
-  height: 200px; */
-}
-
-
-
-
-
-/* .game-contents {
-  text-align: center;
-  display: none;
-  margin-bottom: 100px;
-} */
-
-/* .first-container {
-  height: 100px;
-} */
 
 /* Footer */
 
