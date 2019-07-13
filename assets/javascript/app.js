@@ -104,12 +104,19 @@ function gifGenerator() {
         img.attr("data-still", gifStillURL);
         img.attr("data-animate", gifAnimateURL);
         img.attr("data-state", "still");
-        img.addClass("card-img-top gif");
+        img.addClass("card-img-top img-adjusted gif");
        
         cardDiv.append(img);
         cardDiv.append(cardBody);
         cardBody.append(gifTitle);
         cardBody.append(gifRating);
+
+        var favBtn = $("<button>");
+        favBtn.attr("data-favorite", i);
+        favBtn.addClass("btn btn-dark fav-button");
+        favBtn.text("♥");
+
+        cardDiv.append(favBtn);
 
 
         // meta data rating, title, tags, etc
@@ -127,7 +134,7 @@ function gifGenerator() {
 
         // card
 
-
+        // Let's try having multiple .gif-container or rows and use for loop i = 0; i < 2 // i = 2; i < 4 and so on
         $(".gif-container").prepend(cardDiv);
 
 
