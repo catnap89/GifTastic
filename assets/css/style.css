@@ -83,7 +83,7 @@ body {
 
 .main-container {
   border: 1px solid red;
-  margin: 0px 20px 20px 20px;
+  margin: 0px 20px 100px 20px;
 }
 
 /* left-container */
@@ -100,11 +100,32 @@ body {
 
 .gif-container {
   border: 1px solid teal;
+ 
+  
 }
 
 /* right-container */
 .left-container {
   border: 1px solid blue;
+}
+
+.card-deck .card {
+  margin-bottom: 30px;
+}
+
+.card {
+  width: 45%;
+  height: 400px;
+  border: 2px solid red;
+  float: left;
+  margin-bottom: 100px;
+  min-width: calc(45% - 30px);
+
+}
+
+.gif {
+  /* width: 200px;
+  height: 200px; */
 }
 
 
@@ -122,6 +143,7 @@ body {
 } */
 
 /* Footer */
+
 .footer {
     background-color: #666666;
     text-align: center;
@@ -143,90 +165,15 @@ body {
   margin-right: 10px;
   margin-bottom: 10px;
 }
-/* button {
-  font-family: Papyrus, fantasy, sans-serif;
-} */
 
-/* .start-button {
-  margin-top: 200px;
-  margin-bottom: 200px;
-} */
-
-/* .restart-button {
-  width: 300px;
-  margin-left: auto;
-  margin-right: auto;
-} */
-
-/* .button-group {
-  margin-top: 50px;
-} */
-
-/* texts & number styling */
-/* h3 { 
-  font-family: Papyrus, fantasy, sans-serif;
-  font-size: 24px; 
-  font-style: normal; 
-  font-variant: normal; 
-  font-weight: 700; 
-  color: yellow;
-} */
-
-/* .timer-number {
-  color: teal;
-} */
-/* 
-.answer {
-  font-family: Papyrus, fantasy, sans-serif;
-  font-size: 24px; 
-  font-style: normal; 
-  font-variant: normal; 
-  font-weight: 700;
-  color: white;
-} */
-
-/* .correct {
-  font-family: Papyrus, fantasy, sans-serif;
-  font-size: 24px; 
-  font-style: normal; 
-  font-variant: normal; 
-  font-weight: 700;
-  color: greenyellow;
-} */
-
-/* .incorrect {
-  font-family: Papyrus, fantasy, sans-serif;
-  font-size: 24px; 
-  font-style: normal; 
-  font-variant: normal; 
-  font-weight: 700;
+.fav-button {
+  font-size: 20px;
   color: red;
-} */
-
-/* .times_up {
-  font-family: Papyrus, fantasy, sans-serif;
-  font-size: 24px; 
-  font-style: normal; 
-  font-variant: normal; 
-  font-weight: 700;
-  color: aqua;
-} */
-
-/* .result_score {
-  color: white;
-} */
-
-
-
-/* gif */
-/* .result_gif {
-  width: 400px;
-  height: 200px;
-} */
+}
 
 /* @media query*/
 /* result_gif */
-@media only screen and (max-width: 980px) {
+/* @media only screen and (max-width: 980px) {
     .result_gif {
         width: 100%;     
     }
@@ -244,4 +191,12 @@ body {
         width: 220px;
         height: 110px;
     }
+} */
+
+@media only screen and (max-width: 576px) {
+    .card-deck .card {
+      min-width: 90%;
+      height: 350px;
+    }
 }
+
