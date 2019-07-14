@@ -74,7 +74,15 @@ function gifGenerator() {
   // topic variable is the value of data-topics of the button that is clicked on.
   var topic = $(this).attr("data-topics");
   var limit = 10
+  // var page = 0
+  // page += 1;
+  // console.log(page);
+  // var offset = (page * limit)
+
+  // console.log(offset);
   var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=ba6zqaYk7V3NBpJPJXcg5yTDeEf7V0bQ&q=" + topic + "&limit=" + limit;
+  
+  
 
   $.ajax({
     url: queryURL,
@@ -135,6 +143,25 @@ function gifGenerator() {
 
       }
     });
+
+  
+}
+
+// How to request and display more gifs?
+/*
+# Request more gifs when the topic button is clicked on
+  # increase offset as the topic button is clicked on
+  # update the offset on the queryURL to get the new gifs.
+  # How do I increase offset only when the same topic button is clicked more than once?
+  # How do I reset offset when new topic button is clicked?
+
+# Make another button to request more gifs and request more gifs when it's clicked on.
+  # How do I tell the moreRequest button to get the same data that was requested previously?
+    * Maybe, if I save the topic (what user inputted in the search box) in local storage and retrieve it when I click on moreRequest button?
+    * start the offset as 10 ( or should it be 11?) to avoid getting the data from offset 0~9(or is it 1~10).
+*/
+function moreGifs() {
+
 }
 
 $(document).on("click", ".gif", function() {
@@ -152,4 +179,35 @@ $(document).on("click", ".gif", function() {
   }
 });
 
+
+
+// make favorite gif when the heart button is clicked.
+// Using local storage, make a functioning favorite button
+/*
+# Have the heart button numbers corresponding to it's data's order. (data-favorite, i)
+# When the heart button is clicked, the datas needed (url, title, tag, rating) of the gif (find it by using res.data[$(this).attr("data-favorite")]) is saved in local storage
+# with the data stored, using the title of the gif, make a favorite gif button.
+# When the button is clicked, request gif that has the same title and url, and display it.
+
+# When favorite button of a gif is clicked,
+  * store the still, animate, rating, title and favorite history data in local storage.
+  * dynamically create button with class "favorite-gif" that stores above information and named as the title of the gif.
+  * Also save the favorite-gif button in local storage so it does not get lost when the page refreshes or closed.
+  * 
+# When the favorite-gif button is clicked
+  * Using the data stored in the button, search the gif user added as favorite.
+  * Let's remove all previously displayed gifs to clear the gif container and then display the favorite gif when it's clicked.
+  * 
+
+*/
+
+
+// Also make favorite topic
+/*
+
+# Type value in the text box
+# click "add as favorite topic" button instead of submit
+# saved as a button in favorite topic section.
+
+*/
 
