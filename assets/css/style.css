@@ -86,6 +86,29 @@ body {
   margin: 0px 20px 100px 20px;
 }
 
+/* left-container */
+.left-container {
+  border: 1px solid blue;
+}
+
+.searchbox {
+  border: 2px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.favorite-topics {
+  border: 2px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  
+}
+
+.favorite-gifs {
+  border: 2px solid #ddd;
+  padding: 10px;
+}
+
 /* right-container */
 .right-container {
 
@@ -99,12 +122,6 @@ body {
 .gif-container {
   border: 1px solid teal;
  
-  
-}
-
-/* left-container */
-.left-container {
-  border: 1px solid blue;
 }
 
 .card-deck .card {
@@ -114,7 +131,7 @@ body {
 .card {
   width: 45%;
   height: 400px;
-  border: 2px solid red;
+  border: 2px solid #ddd;
   float: left;
   margin-bottom: 100px;
   min-width: calc(45% - 30px);
@@ -149,6 +166,10 @@ body {
 .fav-button {
   font-size: 20px;
   color: red;
+}
+
+form button {
+  margin-bottom: 5px;
 }
 
 /* @media query*/
