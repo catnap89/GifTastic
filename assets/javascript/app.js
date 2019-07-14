@@ -19,8 +19,13 @@
 ## More Gifs button clicked
   * Display 10 more gifs to the page without overwriting existing gifs. (prepend) - check
 
-## Favorite button clicked
-  * Store the gif and it's metadata when it's favorite button is clicked to the favorite section.
+## Favorite buttons
+  # Favorite topic buttons
+    * when user input some value inside textbox and click add as favorite button
+      * make favorite topic button -- check
+      * when the favorite topic button is clicked, display 10 gifs that are related to the value of the favorite topic button -- check
+  # Favorite gif button
+    * Store the gif and it's metadata when it's favorite button is clicked to the favorite section.
 
 */
 
@@ -237,8 +242,8 @@ How to request and display more gifs?
 function moreGifs() {
 
   event.preventDefault();
-  // Only call this function if at least one topic was added in topics array and renderGif function is called and made condition true.
-  if (topics != "" && condition == true) {
+  // Only call this function if renderGif function is called to change condition variable as true.
+  if (condition == true) {
     // increasing page by one each time the function is called
     page++;
     var limit = 10
@@ -370,13 +375,4 @@ function renderFavoriteButton(list) {
 
 */
 
-
-// Also make favorite topic
-/*
-
-# Type value in the text box
-# click "add as favorite topic" button instead of submit
-# saved as a button in favorite topic section.
-
-*/
 
