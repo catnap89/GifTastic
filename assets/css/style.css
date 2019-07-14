@@ -97,14 +97,14 @@ body {
   margin-bottom: 10px;
 }
 
-.favorite-topics {
+.favorite-topics-container {
   border: 2px solid #ddd;
   padding: 10px;
   margin-bottom: 10px;
   
 }
 
-.favorite-gifs {
+.favorite-gifs-container {
   border: 2px solid #ddd;
   padding: 10px;
 }
