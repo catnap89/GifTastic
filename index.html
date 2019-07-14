@@ -60,15 +60,39 @@
         <div class="row topic">
           <div class="col-md-12">
 
-            <form>
+            <form class="searchbox">
               <div class="form-group">
-                <label for="FormControlTextArea">Gifs You Want</label>
+                <label for="FormControlTextArea">Gif Topic</label>
                 <input type="text" class="form-control" id="inputTopic" placeholder="">
               </div>
               <!-- button type is changed from submit to button since submit button automatically refreshes the page causing issues -->
               <button type="submit" class="btn btn-primary topic-submit">Submit</button>
+              <button type="submit" class="btn btn-primary add-favorite-topic">Add As Favorite</button>
+              <button type="submit" class="btn btn-primary request-gifs">More Gifs</button>
             </form>
 
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="favorite-topics">
+              <p>
+                Your Favorite Gif Topics:
+              </p>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="favorite-gifs">
+              <p>
+                Your Favorite Gifs:
+              </p>
+
+            </div>
           </div>
         </div>
 
