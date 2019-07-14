@@ -29,7 +29,7 @@
 // Store the topic keywords from input box. Gif generator buttons will be made using this array.
 var topics = [];
 // this is for the moreGifs function so that it can only run when var condition is true.
-// change var condition to true when gifGenerator function was called so that moreGifs can only be called after gifGenerator was called.
+// change var condition to true when renderGif function was called so that moreGifs can only be called after renderGif was called.
 var condition = false;
 /*
  lets think of this as a book with pages. after 10 data, user moves to new page that also have 10 data
@@ -49,17 +49,16 @@ $(".topic-submit").on("click", function(event){
   if (topicInput != "" && !topics.includes(topicInput)) {
     // push the #inputTopic's value as a string in topics array.
     topics.push(topicInput);
-    // buttonGenerator();
+    
   }
   // ??: Does not seem to matter if the function is placed in if statment or outside of it.
-  buttonGenerator();
+  renderButton();
+  // Clear the textbox when done
+  $("#inputTopic").val("");
 
 });
 
-buttonGenerator();
-
-
-
+renderButton();
 
 
 $(".add-favorite-topic").on("click", function(event) {
@@ -76,7 +75,7 @@ $(".add-favorite-topic").on("click", function(event) {
     }
 
     // Update the favorite topic buttons on the page
-    favBtnGenerator(list);
+    renderFavoriteButton(list);
 
     // Save the favorite topic buttons into localstorage.
     // We need to use JSON.stringify to turn the list from an array into a string
@@ -96,7 +95,7 @@ $(".add-favorite-topic").on("click", function(event) {
     list.splice(removeFavoriteNumber, 1);
 
     // Update the todos on the page
-    favBtnGenerator(list);
+    renderFavoriteButton(list);
 
     // Save the todos into localstorage.
     // We need to use JSON.stringify to turn the list from an array into a string
@@ -114,15 +113,15 @@ $(".add-favorite-topic").on("click", function(event) {
     list = [];
   }
     
-favBtnGenerator(list);
+renderFavoriteButton(list);
 
 
 
 
 
 // let's write ajax call to get the data when the dynamically created button is clicked.
-$(document).on("click", ".button-topics", gifGenerator);
-$(document).on("click", ".favorite-topic", gifGenerator);
+$(document).on("click", ".button-topics", renderGif);
+$(document).on("click", ".favorite-topic", renderGif);
 // on click method to call moreGifs function that requests 10 more gifs that are not duplicates of previous gifs.
 $(".request-gifs").on("click", moreGifs);
 
@@ -130,7 +129,7 @@ $(".request-gifs").on("click", moreGifs);
 // ==========================================
 
 // function to display buttons
-function buttonGenerator() {
+function renderButton() {
   
   // Deleting the movie buttons prior to adding new movie buttons
   // (this is necessary otherwise the previous buttons will remain and newly made buttons will be added on top of them.)
@@ -146,7 +145,7 @@ function buttonGenerator() {
 
 }
 
-function gifGenerator() {
+function renderGif() {
   condition = true;
   page = 0;
   // topic variable is the value of data-topics of the button that is clicked on.
@@ -238,14 +237,14 @@ How to request and display more gifs?
 function moreGifs() {
 
   event.preventDefault();
-  // Only call this function if at least one topic was added in topics array and gifGenerator function is called and made condition true.
+  // Only call this function if at least one topic was added in topics array and renderGif function is called and made condition true.
   if (topics != "" && condition == true) {
     // increasing page by one each time the function is called
     page++;
     var limit = 10
     // offset is like a bookmark on the page. This is to show next set of gifs starting from the Offset.
     var offset = page * limit;
-    // The gifGenerator function gives .request-gifs button with data-topic attribute with the value of the button that is being clicked on. (if dog button is clicked, data-topic of .request-gifs button becomes dog.)
+    // The renderGif function gives .request-gifs button with data-topic attribute with the value of the button that is being clicked on. (if dog button is clicked, data-topic of .request-gifs button becomes dog.)
     var topic = $(this).attr("data-topic");
 
     var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=ba6zqaYk7V3NBpJPJXcg5yTDeEf7V0bQ&q=" + topic + "&limit=" + limit + "&offset=" + offset;
@@ -320,7 +319,7 @@ $(document).on("click", ".gif", function() {
 });
 
 
-function favBtnGenerator(list) {
+function renderFavoriteButton(list) {
     $(".favorite-topics-group").empty(); // empties out the html
 
     // render our todos to the page
