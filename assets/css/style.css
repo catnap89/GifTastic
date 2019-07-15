@@ -99,6 +99,13 @@ body {
   border: 2px solid #ddd;
   padding: 10px;
   background-color: beige;
+  margin-bottom: 10px;
+}
+
+.topic-button-container {
+  border: 2px solid #ddd;
+  padding: 10px;
+  background-color: beige;
 }
 
 /* right-container */
@@ -149,7 +156,6 @@ body {
 
 /* buttons */
 .button-group {
-  border-top: 3px solid #ddd;
   margin-top: 20px;
   padding-top: 10px;
 }
