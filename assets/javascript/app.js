@@ -119,7 +119,7 @@ $(document).on("click", ".heart-button", function(event) {
   // Load the favorite-topic from localstorage.
   // We need to use JSON.parse to turn the string retrieved  from an array into a string
   var favoriteGifTitle = JSON.parse(localStorage.getItem("favorite-gif-title"));
-  var favoriteGifId = JSON.parse(localStorage.getItem("favorite-gif-id "));
+  var favoriteGifId = JSON.parse(localStorage.getItem("favorite-gif-id"));
 
   // Checks to see if the favoriteGifTitle exists in localStorage and is an array currently
   // If not, set a local favoriteGifTitle variable to an empty array
@@ -195,6 +195,7 @@ renderFavoriteButton(list);
 // let's write ajax call to get the data when the dynamically created button is clicked.
 $(document).on("click", ".button-topics", renderGif);
 $(document).on("click", ".favorite-topic", renderGif);
+$(document).on("click", ".favorite-gif", renderFavGif);
 // on click method to call moreGifs function that requests 10 more gifs that are not duplicates of previous gifs.
 $(".request-gifs").on("click", moreGifs);
 
@@ -219,8 +220,10 @@ function renderButton() {
 
 }
 
-// functino to use button's data-topics attribute to request certain data from API and dynamically create gifs and it's metadata inside card.
+// function to use button's data-topics attribute to request certain data from API and dynamically create gifs and it's metadata inside card.
 function renderGif() {
+    // empty existing gifs
+  $(".fav-gif-container").empty();
   condition = true;
   page = 0;
   // topic variable is the value of data-topics of the button that is clicked on.
@@ -281,8 +284,57 @@ function renderGif() {
 
       }
     });
+}
 
+// function to use button's data-id attribute to request data of the specific gif that was saved as favorite gif.
+function renderFavGif() {
   
+  // empty existing gifs
+  $(".gif-container").empty();
+  // id variable is the value of data-id of the button that is clicked on.
+  var id = $(this).attr("data-id");
+  console.log(id);
+
+  // URL with ID of the GIF to request data of the specific gif.
+  var queryURL = "https://api.giphy.com/v1/gifs/" + id + "?api_key=ba6zqaYk7V3NBpJPJXcg5yTDeEf7V0bQ"
+    
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+  })
+    .then(function(res){
+      console.log(res);
+
+      var gifStillURL = res.data.images.fixed_height_still.url;
+      var gifAnimateURL = res.data.images.fixed_height.url;
+      var gifRating = $("<p>").text("Rating: " + res.data.rating);
+      gifRating.addClass("card-text");
+      var gifTitle = $("<h5>").text("Title: " + res.data.title);
+      gifTitle.addClass("card-title");
+      
+      // img (gif) element with below attributes and class
+      var cardDiv = $("<div>");
+      cardDiv.addClass("card favorite-gif-card");
+
+      var cardBody = $("<div>");
+      cardBody.addClass("card-body");
+
+      var img = $("<img>");
+      img.attr("src", gifStillURL);
+      img.attr("data-still", gifStillURL);
+      img.attr("data-animate", gifAnimateURL);
+      img.attr("data-state", "still");
+      img.addClass("card-img-top img-adjusted gif");
+      
+      cardDiv.append(img);
+      cardDiv.append(cardBody);
+      cardBody.append(gifTitle);
+      cardBody.append(gifRating);
+
+      $(".fav-gif-container").prepend(cardDiv);
+
+    
+    });
 }
 
 
@@ -429,7 +481,7 @@ function renderFavoriteButton(list) {
       var favGifButton = $('<button type="submit">' + favoriteGifTitle[i] + '</button>');
       favGifButton.addClass("btn btn-danger favorite-gif");
       favGifButton.attr("data-id", favoriteGifId[i]);
-
+      
       // make remove button
       var favGifClose = $('<button>');
       favGifClose.attr("data-remove-favorite", i);
@@ -447,25 +499,3 @@ function renderFavoriteButton(list) {
   }
 
 
-// make favorite gif when the heart button is clicked.
-// Using local storage, make a functioning favorite button
-/*
-# Have the heart button numbers corresponding to it's data's order. (data-favorite, i)
-# When the heart button is clicked, the datas needed (url, title, tag, rating) of the gif (find it by using res.data[$(this).attr("data-favorite")]) is saved in local storage
-# with the data stored, using the title of the gif, make a favorite gif button.
-# When the button is clicked, request gif that has the same title and url, and display it.
-
-# When favorite button of a gif is clicked,
-  * store the still, animate, rating, title and favorite history data in local storage.
-  * dynamically create button with class "favorite-gif" that stores above information and named as the title of the gif.
-  * Also save the favorite-gif button in local storage so it does not get lost when the page refreshes or closed.
-  * 
-# When the favorite-gif button is clicked
-  * Using the data stored in the button, search the gif user added as favorite.
-  * Let's remove all previously displayed gifs to clear the gif container and then display the favorite gif when it's clicked.
-  * 
-
-*/
-
-
-// INSTEAD OF GIVING THE HEART BUTTONS ATTRIBUTE WITH NUMBER AS VALUE, GIVE THE BUTTONS ATTRIBUTE THAT IS AN ID OF THE GIF
