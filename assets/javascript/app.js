@@ -43,6 +43,9 @@ var condition = false;
 */
 var page = 0;
 
+var favoriteGifTitle = [];
+var favoriteGifId = [];
+
 // ON CLICK METHODS
 // ==========================================
 // on click function to push textbox's value in topics array and call renderButton function
@@ -64,7 +67,72 @@ $(".topic-submit").on("click", function(event){
 
 });
 
+
 renderButton();
+
+// on click function to grab the data attributes of the heartbutton that is clicked and renderButtons using the data attributes.
+$(document).on("click", ".heart-button", function(event) {
+  event.preventDefault();
+  // grab the data-id attribute's value of the heartbutton that was clicked on
+  var dataId = $(this).attr("data-id");
+  var dataTitle = $(this).attr("data-title");
+
+  if (!favoriteGifId.includes(dataId)) {
+    favoriteGifId.push(dataId);
+  }
+
+  if (!favoriteGifTitle.includes(dataTitle)) {
+    favoriteGifTitle.push(dataTitle);
+  }
+
+  // update the favoriteGifButton on the page
+  renderFavoriteGifButton(favoriteGifTitle);
+
+  // Save the favorite gif buttons into localstorage.
+  // We need to use JSON.stringify to turn the list from an array into a string
+  localStorage.setItem("favorite-gif-title", JSON.stringify(favoriteGifTitle));
+  localStorage.setItem("favorite-gif-id", JSON.stringify(favoriteGifId));
+
+
+
+
+})
+
+// When a user clicks a x button then delete the specific content
+  $(document).on("click", ".checkbox-gif", function() {
+    // Get the number of the button from its data attribute and hold in a variable called removeFavoriteNumber.
+    var removeFavoriteNumber = $(this).attr("data-remove-favorite");
+
+    // Deletes the item marked for deletion
+    favoriteGifTitle.splice(removeFavoriteNumber, 1);
+    favoriteGifId.splice(removeFavoriteNumber, 1);
+
+    // Update the favorite gif button on the page
+    renderFavoriteGifButton(favoriteGifTitle);
+
+    // Save the favorite-topic into localstorage.
+    // We need to use JSON.stringify to turn the list from an array into a string
+    localStorage.setItem("favorite-gif-title", JSON.stringify(favoriteGifTitle));
+    localStorage.setItem("favorite-gif-id", JSON.stringify(favoriteGifId));
+  });
+
+  // Load the favorite-topic from localstorage.
+  // We need to use JSON.parse to turn the string retrieved  from an array into a string
+  var favoriteGifTitle = JSON.parse(localStorage.getItem("favorite-gif-title"));
+  var favoriteGifId = JSON.parse(localStorage.getItem("favorite-gif-id "));
+
+  // Checks to see if the favoriteGifTitle exists in localStorage and is an array currently
+  // If not, set a local favoriteGifTitle variable to an empty array
+  // Otherwise favoriteGifTitle is our current favoriteGifTitle of favorite-gif-Title
+  if (!Array.isArray(favoriteGifTitle)) {
+    favoriteGifTitle = [];
+  }
+
+  if (!Array.isArray(favoriteGifId)) {
+    favoriteGifId = [];
+  }
+    
+renderFavoriteGifButton(favoriteGifTitle);
 
 // on click function to push textbox's value in list array and call renderFavoriteButton function and save list array in localstorage as string.
 $(".add-favorite-topic").on("click", function(event) {
@@ -73,7 +141,6 @@ $(".add-favorite-topic").on("click", function(event) {
     // Get the inputTopic "value" from the textbox and store it as a variable
     var topicInput = $("#inputTopic").val().trim();
 
-    // Adding our new todo to our local list variable and adding it to local storage
     if (topicInput != "" && !list.includes(topicInput)) {
       
       list.push(topicInput);
@@ -94,27 +161,27 @@ $(".add-favorite-topic").on("click", function(event) {
 
 // When a user clicks a x button then delete the specific content
   $(document).on("click", ".checkbox", function() {
-    // Get the number of the button from its data attribute and hold in a variable called  toDoNumber.
+    // Get the number of the button from its data attribute and hold in a variable called removeFavoriteNumber.
     var removeFavoriteNumber = $(this).attr("data-remove-favorite");
 
     // Deletes the item marked for deletion
     list.splice(removeFavoriteNumber, 1);
 
-    // Update the todos on the page
+    // Update the favorite topic button on the page
     renderFavoriteButton(list);
 
-    // Save the todos into localstorage.
+    // Save the favorite-topic into localstorage.
     // We need to use JSON.stringify to turn the list from an array into a string
     localStorage.setItem("favorite-topic", JSON.stringify(list));
   });
 
-  // Load the todos from localstorage.
+  // Load the favorite-topic from localstorage.
   // We need to use JSON.parse to turn the string retrieved  from an array into a string
   var list = JSON.parse(localStorage.getItem("favorite-topic"));
 
   // Checks to see if the favorite-topic exists in localStorage and is an array currently
   // If not, set a local list variable to an empty array
-  // Otherwise list is our current list of todos
+  // Otherwise list is our current list of favorite-topic
   if (!Array.isArray(list)) {
     list = [];
   }
@@ -199,7 +266,7 @@ function renderGif() {
         cardBody.append(gifTitle);
         cardBody.append(gifRating);
         // favorite button 
-        var heartBtn = $("<button>");
+        var heartBtn = $('<button type="submit">');
         // data-id and data-title attributes will be used for favorite gif button.
         var gifId = res.data[i].id;
         var gifTitle = res.data[i].title;
@@ -210,20 +277,7 @@ function renderGif() {
 
         cardDiv.append(heartBtn);
 
-
-        // meta data rating, title, tags, etc
-        // <div class="card">
-        //   <img src="..." class="card-img-top">
-        //   <div class="card-body">
-        //     <h5 class="card-title">Card title</h5>
-        //     <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        //     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        //   </div>
-        // </div>
-
-
         $(".gif-container").prepend(cardDiv);
-
 
       }
     });
@@ -296,7 +350,7 @@ function moreGifs() {
           cardBody.append(gifTitle);
           cardBody.append(gifRating);
           // favorite button 
-          var heartBtn = $("<button>");
+          var heartBtn = $('<button type="submit">');
           var gifId = res.data[i].id;
           var gifTitle = res.data[i].title;
           heartBtn.attr("data-id", gifId);
@@ -339,7 +393,7 @@ function renderFavoriteButton(list) {
 
     // render our todos to the page
     for (var i = 0; i < list.length; i++) {
-      var favTopicBtnDiv = $('<div class="button-container">')
+      var favTopicBtnDiv = $('<div class="btn-group button-container">');
       var favTopicButton = $('<button type="submit">' + list[i] + '</button>');
       favTopicButton.addClass("btn btn-success favorite-topic");
       favTopicButton.attr("data-topics", list[i]);
@@ -351,16 +405,44 @@ function renderFavoriteButton(list) {
       var favTopicClose = $("<button>");
 
       favTopicClose.attr("data-remove-favorite", i);
-      favTopicClose.addClass("checkbox");
+      favTopicClose.addClass("btn btn-success checkbox");
       favTopicClose.text("x");
 
-      // Append the button to the to do item
+      // Append the button to the to do div
       favTopicBtnDiv.append(favTopicButton);
       favTopicBtnDiv.append(favTopicClose);
 
 
-      // Add the button and to do item to the to-dos div
+      // Add the button container to the favorite-topics-group div
       $(".favorite-topics-group").append(favTopicBtnDiv);
+    }
+  }
+
+  function renderFavoriteGifButton(favoriteGifTitle) {
+    $(".favorite-gifs-group").empty();
+
+    for (var i = 0; i < favoriteGifTitle.length; i++) {
+
+      // make favorite-gif button
+      var favGifBtnDiv = $('<div class="btn-group button-container">');
+      favGifBtnDiv.attr("role", "group");
+      var favGifButton = $('<button type="submit">' + favoriteGifTitle[i] + '</button>');
+      favGifButton.addClass("btn btn-danger favorite-gif");
+      favGifButton.attr("data-id", favoriteGifId[i]);
+
+      // make remove button
+      var favGifClose = $('<button>');
+      favGifClose.attr("data-remove-favorite", i);
+      favGifClose.addClass("btn btn-danger checkbox-gif");
+      favGifClose.text("x");
+
+      // Append the button to the button container
+      // favGifButton.append(favGifClose);
+      favGifBtnDiv.append(favGifButton);
+      favGifBtnDiv.append(favGifClose);
+
+      // Append the button-container to the favorite-gifs-group div
+      $(".favorite-gifs-group").append(favGifBtnDiv)
     }
   }
 
