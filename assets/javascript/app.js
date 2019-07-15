@@ -110,13 +110,13 @@ $(document).on("click", ".heart-button", function(event) {
     // Update the favorite gif button on the page
     renderFavoriteGifButton(favoriteGifTitle);
 
-    // Save the favorite-topic into localstorage.
+    // Save the favoriteGifTitle and foavoriteGifId into localstorage.
     // We need to use JSON.stringify to turn the list from an array into a string
     localStorage.setItem("favorite-gif-title", JSON.stringify(favoriteGifTitle));
     localStorage.setItem("favorite-gif-id", JSON.stringify(favoriteGifId));
   });
 
-  // Load the favorite-topic from localstorage.
+  // Load the favoriteGifTitle and favoriteGifId from localstorage.
   // We need to use JSON.parse to turn the string retrieved  from an array into a string
   var favoriteGifTitle = JSON.parse(localStorage.getItem("favorite-gif-title"));
   var favoriteGifId = JSON.parse(localStorage.getItem("favorite-gif-id"));
@@ -133,6 +133,7 @@ $(document).on("click", ".heart-button", function(event) {
   }
     
 renderFavoriteGifButton(favoriteGifTitle);
+
 
 // on click function to push textbox's value in list array and call renderFavoriteButton function and save list array in localstorage as string.
 $(".add-favorite-topic").on("click", function(event) {
@@ -192,10 +193,11 @@ renderFavoriteButton(list);
 
 
 
-// let's write ajax call to get the data when the dynamically created button is clicked.
+// let's write on click method to do ajax call to get the data when the dynamically created button is clicked.
 $(document).on("click", ".button-topics", renderGif);
 $(document).on("click", ".favorite-topic", renderGif);
 $(document).on("click", ".favorite-gif", renderFavGif);
+
 // on click method to call moreGifs function that requests 10 more gifs that are not duplicates of previous gifs.
 $(".request-gifs").on("click", moreGifs);
 
