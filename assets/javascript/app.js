@@ -45,6 +45,7 @@ var page = 0;
 
 // ON CLICK METHODS
 // ==========================================
+// on click function to push textbox's value in topics array and call renderButton function
 $(".topic-submit").on("click", function(event){
 
   event.preventDefault();
@@ -65,7 +66,7 @@ $(".topic-submit").on("click", function(event){
 
 renderButton();
 
-
+// on click function to push textbox's value in list array and call renderFavoriteButton function and save list array in localstorage as string.
 $(".add-favorite-topic").on("click", function(event) {
     event.preventDefault();
 
@@ -130,10 +131,11 @@ $(document).on("click", ".favorite-topic", renderGif);
 // on click method to call moreGifs function that requests 10 more gifs that are not duplicates of previous gifs.
 $(".request-gifs").on("click", moreGifs);
 
+
 // FUNCTIONS
 // ==========================================
 
-// function to display buttons
+// function to display topic buttons
 function renderButton() {
   
   // Deleting the movie buttons prior to adding new movie buttons
@@ -150,6 +152,7 @@ function renderButton() {
 
 }
 
+// functino to use button's data-topics attribute to request certain data from API and dynamically create gifs and it's metadata inside card.
 function renderGif() {
   condition = true;
   page = 0;
@@ -197,8 +200,12 @@ function renderGif() {
         cardBody.append(gifRating);
         // favorite button 
         var favBtn = $("<button>");
-        favBtn.attr("data-favorite", i);
-        favBtn.addClass("btn btn-dark fav-button");
+        // data-id and data-title attributes will be used for favorite gif button.
+        var gifId = res.data[i].id;
+        var gifTitle = res.data[i].title;
+        favBtn.attr("data-id", gifId);
+        favBtn.attr("data-title", gifTitle);
+        favBtn.addClass("btn btn-dark heart-button");
         favBtn.text("♥");
 
         cardDiv.append(favBtn);
@@ -290,8 +297,11 @@ function moreGifs() {
           cardBody.append(gifRating);
           // favorite button 
           var favBtn = $("<button>");
-          favBtn.attr("data-favorite", i);
-          favBtn.addClass("btn btn-dark fav-button");
+          var gifId = res.data[i].id;
+          var gifTitle = res.data[i].title;
+          favBtn.attr("data-id", gifId);
+          favBtn.attr("data-title", gifTitle);
+          favBtn.addClass("btn btn-dark heart-button");
           favBtn.text("♥");
 
           cardDiv.append(favBtn);
@@ -376,3 +386,4 @@ function renderFavoriteButton(list) {
 */
 
 
+// INSTEAD OF GIVING THE HEART BUTTONS ATTRIBUTE WITH NUMBER AS VALUE, GIVE THE BUTTONS ATTRIBUTE THAT IS AN ID OF THE GIF
