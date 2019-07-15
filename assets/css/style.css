@@ -163,7 +163,11 @@ body {
   margin-bottom: 10px;
 }
 
-.fav-button {
+.favorite-topic {
+  margin-bottom: 10px;
+}
+
+.heart-button {
   font-size: 20px;
   color: red;
 }
