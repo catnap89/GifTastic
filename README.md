@@ -24,7 +24,7 @@ There are also two different kind of **Favorites** to store favorite topics or s
     * The Favorite Gif Topics button, on click, will **display 10 gifs** related to the topic.
     * While **Favorite Gif Topics** button and **Topic** button does same thing on click, the difference is that **Favorite Gif Topics** buttons will persist even after the browser is closed or refreshed.
 
-### When gifs are displayed by clicking topic button or favorite Gif Topic buttons
+### After gifs are displayed by clicking topic button or favorite Gif Topic buttons
   * Click **More Gifs** button to request 10 more gifs related to the topic.
     * User can click **More Gifs** button however many times they want.
   
@@ -34,3 +34,13 @@ There are also two different kind of **Favorites** to store favorite topics or s
 ## When Favorite Gifs button is clicked
   * The app will display the gif that the user saved as their favorite gif.
 
+## GIFS Displayed
+  * The gifs is **not animated** when they are being displayed.
+  * **Click** on the gif to **toggle between animated and non-animated gifs.**
+
+## Favorite Buttons
+  * Both Favorite Gif Topics buttuon and Favorite Gifs Button will have x button on the right side of them.
+  * Clicking x button will remove the favorite button.
+  * User can always make them favorite again.
+
+  
