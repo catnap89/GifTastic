@@ -199,16 +199,16 @@ function renderGif() {
         cardBody.append(gifTitle);
         cardBody.append(gifRating);
         // favorite button 
-        var favBtn = $("<button>");
+        var heartBtn = $("<button>");
         // data-id and data-title attributes will be used for favorite gif button.
         var gifId = res.data[i].id;
         var gifTitle = res.data[i].title;
-        favBtn.attr("data-id", gifId);
-        favBtn.attr("data-title", gifTitle);
-        favBtn.addClass("btn btn-dark heart-button");
-        favBtn.text("♥");
+        heartBtn.attr("data-id", gifId);
+        heartBtn.attr("data-title", gifTitle);
+        heartBtn.addClass("btn btn-dark heart-button");
+        heartBtn.text("♥");
 
-        cardDiv.append(favBtn);
+        cardDiv.append(heartBtn);
 
 
         // meta data rating, title, tags, etc
@@ -296,15 +296,15 @@ function moreGifs() {
           cardBody.append(gifTitle);
           cardBody.append(gifRating);
           // favorite button 
-          var favBtn = $("<button>");
+          var heartBtn = $("<button>");
           var gifId = res.data[i].id;
           var gifTitle = res.data[i].title;
-          favBtn.attr("data-id", gifId);
-          favBtn.attr("data-title", gifTitle);
-          favBtn.addClass("btn btn-dark heart-button");
-          favBtn.text("♥");
+          heartBtn.attr("data-id", gifId);
+          heartBtn.attr("data-title", gifTitle);
+          heartBtn.addClass("btn btn-dark heart-button");
+          heartBtn.text("♥");
 
-          cardDiv.append(favBtn);
+          cardDiv.append(heartBtn);
 
 
           $(".gif-container").prepend(cardDiv);
