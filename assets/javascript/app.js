@@ -240,7 +240,7 @@ function renderGif() {
   })
     .then(function(res){
 
-      console.log(res);
+      // console.log(res);
       for(var i = 0; i < limit; i++) {
 
         var gifStillURL = res.data[i].images.fixed_height_still.url;
@@ -293,7 +293,7 @@ function renderFavGif() {
   $(".gif-container").empty();
   // id variable is the value of data-id of the button that is clicked on.
   var id = $(this).attr("data-id");
-  console.log(id);
+  // console.log(id);
 
   // URL with ID of the GIF to request data of the specific gif.
   var queryURL = "https://api.giphy.com/v1/gifs/" + id + "?api_key=ba6zqaYk7V3NBpJPJXcg5yTDeEf7V0bQ"
@@ -303,7 +303,7 @@ function renderFavGif() {
     method: "GET",
   })
     .then(function(res){
-      console.log(res);
+      // console.log(res);
 
       var gifStillURL = res.data.images.fixed_height_still.url;
       var gifAnimateURL = res.data.images.fixed_height.url;
@@ -373,7 +373,7 @@ function moreGifs() {
     })
       .then(function(res){
 
-        console.log(res);
+        // console.log(res);
         for(var i = 0; i < limit; i++) {
 
           var gifStillURL = res.data[i].images.fixed_height_still.url;
