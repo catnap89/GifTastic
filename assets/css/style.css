@@ -6,20 +6,10 @@ body {
   height: 100%;
 }
 
-/* Style the video: 100% width and height to cover the entire window */
-/* #wow_mov_bg {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%; 
-  min-height: 100%;
-} */
-
-
 
 .container-fluid {
   height: 100%;
-  /* background-image: url("../images/wow_wallpaper.jpg"); */
+  background-image: url("../images/background-gif1.gif");
   background-size: cover;
   overflow: auto;
 }
@@ -77,52 +67,42 @@ body {
   font-style: normal; 
   font-variant: normal; 
   font-weight: 700;     
+  color: gold;
 }
 
 /* Content */
 
 .main-container {
-  border: 1px solid red;
+
   margin: 0px 20px 100px 20px;
 }
 
 /* left-container */
-.left-container {
-  border: 1px solid blue;
-}
+
 
 .searchbox {
   border: 2px solid #ddd;
   padding: 10px;
   margin-bottom: 10px;
+  background-color: beige;
 }
 
 .favorite-topics-container {
   border: 2px solid #ddd;
   padding: 10px;
   margin-bottom: 10px;
+  background-color: beige;
   
 }
 
 .favorite-gifs-container {
   border: 2px solid #ddd;
   padding: 10px;
+  background-color: beige;
 }
 
 /* right-container */
-.right-container {
 
-  border: 1px solid blue;
-} 
-
-.contents {
-  border: 1px solid green;
-}
-
-.gif-container {
-  border: 1px solid teal;
- 
-}
 
 .card-deck .card {
   margin-bottom: 30px;
@@ -133,9 +113,25 @@ body {
   height: 400px;
   border: 2px solid #ddd;
   float: left;
-  margin-bottom: 100px;
   min-width: calc(45% - 30px);
+  margin-right: auto;
+  margin-left: auto;
 
+}
+
+.card-deck .favorite-gif-card {
+  margin-bottom: 30px;
+}
+
+.favorite-gif-card {
+  width: 45%;
+  height: 400px;
+  border: 2px solid #ddd;
+  float: left;
+  min-width: calc(45% - 30px);
+  max-width: calc(70% - 30px);
+  margin-right: auto;
+  margin-left: auto;
 }
 
 
@@ -160,14 +156,13 @@ body {
 
 .button-container {
   margin-bottom: 10px;
+  margin-right: 10px;
 }
 
 .button-topics {
   margin-right: 10px;
   margin-bottom: 10px;
 }
-
-
 
 .heart-button {
   font-size: 20px;
@@ -176,31 +171,12 @@ body {
 
 
 
+
+
 form button {
   margin-bottom: 5px;
 }
 
-/* @media query*/
-/* result_gif */
-/* @media only screen and (max-width: 980px) {
-    .result_gif {
-        width: 100%;     
-    }
-}
-
-@media only screen and (max-width: 768px) {
-    .result_gif {
-        width: 246px;
-        height: 123px;
-    }
-}
-
-@media only screen and (max-width: 640px) {
-    .result_gif {
-        width: 220px;
-        height: 110px;
-    }
-} */
 
 @media only screen and (max-width: 576px) {
     .card-deck .card {
@@ -209,3 +185,9 @@ form button {
     }
 }
 
+@media only screen and (max-width: 576px) {
+    .card-deck .favorite-gif-card {
+      min-width: 90%;
+      height: 350px;
+    }
+}
